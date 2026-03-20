@@ -61,6 +61,7 @@ The game will be built step-by-step to ensure full understanding of each system.
 * Event Handling
 * Updating Positions
 * Drawing Objects
+
 #### 2. Creating the Grid 
 * In Tetris, the gameplay area is a 20rows*10columns grid.
 * Blocks will fall down the grid, player must arrange the blocks and form complete rows.
@@ -72,6 +73,7 @@ The game will be built step-by-step to ensure full understanding of each system.
     * 0 for empty cells.
     * 1-7 for the colors of the blocks.
 * The current block that can still be controlled by the player will not be reflected in the array. The block will instead be stored and managed separately in the game logic.
+
 #### 3. Creating the Blocks 
 * The blocks of the game all consists of 4 tiles, coming in different shapes like:
     * L-Block
@@ -93,6 +95,16 @@ The game will be built step-by-step to ensure full understanding of each system.
     7. This approach saves computational time and complexity by not needing to calculate the new positions of each tile in the block.
 
 #### 4. Move the Blocks 
+* Up until this point, we are displaying only the occupied positions of a smaller grid, which is the 3x3 block-grid.
+* The origin of the 3x3 block-grid is at the top-left corner.
+* So if we want to move the block, all we have to do is move its origin point (the top-left corner of the 3x3 block-grid).
+* For example, if we want to move the block X rows down, and Y columns to the right, we just need TWO(2) variables to hold the offset in the x and y-axis on the grid. 
+    * `rowOffset`
+    * `colOffset`
+* To move X rows down and Y columns to the right or left, we adjust the `rowOffset = X` and `colOffset = ±Y`, and add these values to the row and column positions of the block's origin point.
+* The ability to move the block also gave rise to an issue, the block can move outside the game grid, beyond the game window.
+* Since we know the game grid is 20x10, the solution is to check the current position of each tile of the block. If any of the tiles has moved outside of the game window, we need to move it back within the boundary of the game window.
+
 #### 5. Rotate the Blocks 
 #### 6. Check for Collisions 
 #### 7. Check for Completed Rows 
