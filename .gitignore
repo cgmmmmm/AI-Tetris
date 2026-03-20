@@ -1,0 +1,12 @@
+# Ignore VS Code settings (personal configs)
+.vscode/
+
+# Ignore compiled executables and object files
+*.exe
+*.o
+*.obj
+*.out
+
+# Ignore build directories
+build/
+bin/
