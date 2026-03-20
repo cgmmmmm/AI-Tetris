@@ -58,6 +58,9 @@ Credit and inspiration for this project go to **Programming With Nick**'s youtub
 The game will be built step-by-step to ensure full understanding of each system.
 
 #### 1. Setup Game Loop 
+* Event Handling
+* Updating Positions
+* Drawing Objects
 #### 2. Creating the Grid 
 #### 3. Creating the Blocks 
 #### 4. Move the Blocks 
