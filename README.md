@@ -53,7 +53,7 @@ This project is designed as a **learning-focused engineering journey**, covering
 
 ## Tetris Game Development
 
-Credit and inspiration for this project go to **Programming With Nick**'s youtube video, titled ***"Creating Tetris in C++ with raylib - Beginner Tutorial (OOP)"***. Which provided a structured guide for the game's development.
+Credit and inspiration for this project go to **Programming With Nick**'s youtube video, titled [***"Creating Tetris in C++ with raylib - Beginner Tutorial (OOP)"***](https://www.youtube.com/watch?v=wVYKG_ch4yM&t=246s). Which provided a structured guide for the game's development.
 
 The game will be built step-by-step to ensure full understanding of each system.
 
@@ -62,6 +62,16 @@ The game will be built step-by-step to ensure full understanding of each system.
 * Updating Positions
 * Drawing Objects
 #### 2. Creating the Grid 
+* In Tetris, the gameplay area is a 20rows*10columns grid.
+* Blocks will fall down the grid, player must arrange the blocks and form complete rows.
+* The origin cell is the top-left cell, having the coordinate (0,0).
+* To represent the grid, we will use a two-dimensional array.
+* Empty cells is represented with a value of 0.
+* When a block is permanently placed on the grid by the player, the corresponding cells will be assigned a value reflecting its color.
+* Since there are 7 colors in the game, the values used in the 2D array will range from 0 to 7. 
+    * 0 for empty cells.
+    * 1-7 for the colors of the blocks.
+* The current block that can still be controlled by the player will not be reflected in the array. The block will instead be stored and managed separately in the game logic.
 #### 3. Creating the Blocks 
 #### 4. Move the Blocks 
 #### 5. Rotate the Blocks 
