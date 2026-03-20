@@ -73,6 +73,25 @@ The game will be built step-by-step to ensure full understanding of each system.
     * 1-7 for the colors of the blocks.
 * The current block that can still be controlled by the player will not be reflected in the array. The block will instead be stored and managed separately in the game logic.
 #### 3. Creating the Blocks 
+* The blocks of the game all consists of 4 tiles, coming in different shapes like:
+    * L-Block
+    * J-Block
+    * I-Block
+    * O-Block
+    * S-Block
+    * T-Block
+    * Z-Block
+* These blocks can spin around, usually in the middle of one of the tiles.
+* For each of the four rotation states, we store which cells are occupied in a specific grid, not all the cells of the grid.
+* For example, take a T-Block:
+    1. A grid is drawn around the T-block that fits the block. (grid is 3x3, making it 9 cells in total in the grid)
+    2. However, we only need to store the cells that the T-block occupies, not the whole grid.
+    3. If the T-block is in Rotation State 0 (no rotation), we only need to store the values: [(0,1), (1,0), (1,1), (1,2)]
+    4. If the T-block is in Rotation State 1 (clockwise 90deg rotation along the middle cell), we only need to store the values: [(0,1), (1,1), (1,2), (2,1)]. And so on...
+    5. Using the bounding grid approach to represent the blocks has a big advantage: it makes rotating the blocks much easier.
+    6. To rotate a block, all we need to do is to update a state variable that indicates the current rotation state of the block, and modify the occupied cells stored in the grid accordingly.
+    7. This approach saves computational time and complexity by not needing to calculate the new positions of each tile in the block.
+
 #### 4. Move the Blocks 
 #### 5. Rotate the Blocks 
 #### 6. Check for Collisions 
