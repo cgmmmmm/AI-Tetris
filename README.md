@@ -125,7 +125,11 @@ The game will be built step-by-step to ensure full understanding of each system.
 * To check for completed rows, all we have to do is check if a row is full, and when it is, we have to clear the row and move all the occupied above the row one row down.
 * To do this, we scan every row of the grid from the bottom to the top. We can use a variable `completedRow` to hold the number of completed rows. If there is a completed row, `completedRow++`, then clear the row and check the next row. If the next row is not completed, we move the every row down by the value of `completedRow` variable until we reach the bottom of the game grid.
 
-#### 8. Game Over 
+#### 8. Game Over
+* In Tetris, the game ends when a newly spawned block overlaps with a block that is already locked in place on the grid, preventing further movement or placement of a new block.
+* To check if the game has to end, we have to check if the newly created block fits in the grid, if it does not fit, the game is over.
+* Now, we need to make the game restart when it's over.
+
 #### 9. Create a User Interface 
 #### 10. Add Scores 
 #### 11. Add Next Block 
