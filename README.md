@@ -138,8 +138,16 @@ The game will be built step-by-step to ensure full understanding of each system.
     * Game Over display.
     * Instructions on how to play the game (Controls)
 
-
 #### 10. Add Scores 
+* The scoring system for this custom Tetris game is limited for simplicity.
+* The goal of this Tetris game is to train a ML model to play the game autonomously and experiment from there. A simplified Tetris game can help reduce training complexity.
+* This Tetris game scoring system is as following:
+    * 100 points for a single line clear
+    * 300 points for a double line clear
+    * 500 points for a triple line clear
+    * 1,000 points for a quadruple line clear 
+    * 1 point for each block moved down by player
+
 #### 11. Add Next Block 
 #### 12. Add Sounds
 
