@@ -122,6 +122,9 @@ The game will be built step-by-step to ensure full understanding of each system.
 * Since we now have a function needed to check if a block fits in its new position. The fix is to implement that in `MoveBlockLeft()`, `MoveBlockRight()`, and `RotateBlock()` as well.
 
 #### 7. Check for Completed Rows 
+* To check for completed rows, all we have to do is check if a row is full, and when it is, we have to clear the row and move all the occupied above the row one row down.
+* To do this, we scan every row of the grid from the bottom to the top. We can use a variable `completedRow` to hold the number of completed rows. If there is a completed row, `completedRow++`, then clear the row and check the next row. If the next row is not completed, we move the every row down by the value of `completedRow` variable until we reach the bottom of the game grid.
+
 #### 8. Game Over 
 #### 9. Create a User Interface 
 #### 10. Add Scores 
