@@ -149,5 +149,8 @@ The game will be built step-by-step to ensure full understanding of each system.
     * 1 point for each block moved down by player
 
 #### 11. Add Next Block 
+* Since we already have a `Draw()` method that draws a block on the screen, we will reuse the `Draw()` method.
+* We need to draw the block, but inside the Next box.
+
 #### 12. Add Sounds
 
