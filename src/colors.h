@@ -4,6 +4,8 @@
 #include <vector>
 
 extern const Color darkGrey;
+extern const Color charcoalBlue;
+
 extern const Color green;
 extern const Color red;
 extern const Color orange;

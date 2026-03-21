@@ -44,10 +44,9 @@ void Grid::Draw()
         {
             int cellValue = grid[row][col];
             // void DrawRectangle(int posX, int posY, int width, int height, Color color)
-            // the reason for the +1 is to add a 1px offset of rectangle
+            // the reason for the +11 is to properly align the grid to the game window
             // the reason for the -1 is to add a margin for each cell
-            // the +1 and -1 is so that we can see the grid
-            DrawRectangle(col * cellSize + 1, row * cellSize + 1, cellSize - 1, cellSize - 1, colors[cellValue]);
+            DrawRectangle(col * cellSize + 11, row * cellSize + 11, cellSize - 1, cellSize - 1, colors[cellValue]);
         }
     }
 }

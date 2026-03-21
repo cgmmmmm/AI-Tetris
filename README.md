@@ -131,6 +131,14 @@ The game will be built step-by-step to ensure full understanding of each system.
 * Now, we need to make the game restart when it's over.
 
 #### 9. Create a User Interface 
+* The user interface consists of several components:
+    * Canvas
+    * Score title text, score value box, and score value.
+    * Next block title text, next block box, and next block display.
+    * Game Over display.
+    * Instructions on how to play the game (Controls)
+
+
 #### 10. Add Scores 
 #### 11. Add Next Block 
 #### 12. Add Sounds
