@@ -153,4 +153,9 @@ The game will be built step-by-step to ensure full understanding of each system.
 * We need to draw the block, but inside the Next box.
 
 #### 12. Add Sounds
+* To add the sounds and music, use the `InitAudioDevice()` provided by the raylib library.
+* We can use `LoadMusicStream()`, `PlayMusicStream()`, `UpdateMusicStream()` to load, play, and update the music.
+* Additionally, we can use `LoadSound()` and `PlaySound()` to to play the sounds. 
+* Don't forget to unload the sounds and music using a destructor and `CloseAudioDevice()`, `UnloadSound()`, `UnloadMusicStream` to free memory. When you load an audio file, the game allocates system memory to hold that data. If it isn't unloaded, especially when changing game states or closing the game, that memory remains occupied, which can lead to memory leaks and cause the game to slow down or crash over time.
 
+### 13. High Score

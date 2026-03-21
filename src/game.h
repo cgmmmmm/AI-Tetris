@@ -7,6 +7,7 @@ class Game
 {
 public:
     Game();
+    ~Game();
 
     void Draw();
     void HandleInput();
@@ -16,6 +17,8 @@ public:
     bool gameOver;
 
     int score;
+
+    Music music;
 
 private:
     bool IsBlockOutside();
@@ -42,4 +45,7 @@ private:
     Block nextBlock;
 
     Grid grid;
+
+    Sound rotateSound;
+    Sound clearSound;
 };
