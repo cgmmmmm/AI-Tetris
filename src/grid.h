@@ -12,6 +12,8 @@ public:
     void Draw();
     bool IsCellOutside(int row, int col);
 
+    bool IsCellEmpty(int row, int col);
+
     int grid[20][10];
 
 private:

@@ -111,6 +111,16 @@ The game will be built step-by-step to ensure full understanding of each system.
 * Fixing this issue is very straightforward, using the same principle that is used in checking if the block moves outside the game window. If the block rotates to an invalid position outside the game window, simply undo the rotation.
 
 #### 6. Check for Collisions 
+* Tetris is a game where the blocks falls automatically, until it hits the bottom of the game grid (X, 20), so we have to implement the automatic dropping of the block first.
+* To achieve this, we can call the `MoveBlockDown()` method of the game class in the game loop. Then, create and using the function `EventTriggered()` that will be used to check if a certain amount of time has passed since the end of the previous event. We can use `EventTriggered()` function to control the event updating rate (time interval between start and end of an event), and repeatedly calls the `MoveBlockDown()` method every few milliseconds.
+* However, there is another issue that we need to address. That is to not allow anymore movements after a collision with the bottom of the game grid.
+* To address this issue, we create the `LockBlock()` private function in the game class. The method need to update the game grid values to represent the location of each cell of the block on the grid at the time it touches the bottom of the screen. For each cell, we will store the ID (corresponding to the block's color) of the block, in the corresponding cell on the game grid. This will mark the cells as locked and indicate that the block has reached its final position. And the next random block can proceed.
+* However, this also creates another issue where the block will always reach the bottom of the game grid, even when there is a block present.
+* To fix this issue, we can create `IsCellEmpty()` method to check if a cell of the grid is empty or not. Then, implement `BlockFits()` to check every cell of a block to see if it is on top of an empty cell of the grid or not.
+* Now, if we attempt to move the block down and encounter a cell that is already occupied, we undo the move and lock the block in place.
+* Again, this introduces a small problem, currently we only check if a block will collide with another block only when the block is moving down, this will cause the current block to overwrite a locked block by moving the current block left, right, or during any rotating state. 
+* Since we now have a function needed to check if a block fits in its new position. The fix is to implement that in `MoveBlockLeft()`, `MoveBlockRight()`, and `RotateBlock()` as well.
+
 #### 7. Check for Completed Rows 
 #### 8. Game Over 
 #### 9. Create a User Interface 
