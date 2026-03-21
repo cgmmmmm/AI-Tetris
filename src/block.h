@@ -11,6 +11,8 @@ public:
     Block();
     void Draw();
     void Move(int rows, int cols);
+    void Rotate();
+    void UndoRotation();
 
     int id;
 

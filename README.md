@@ -106,6 +106,10 @@ The game will be built step-by-step to ensure full understanding of each system.
 * Since we know the game grid is 20x10, the solution is to check the current position of each tile of the block. If any of the tiles has moved outside of the game window, we need to move it back within the boundary of the game window.
 
 #### 5. Rotate the Blocks 
+* Since we already have all the positions of the blocks in every rotation state, we can simply create a member function `RotateBlock()` in the game class in the header file, and implement the function in the implementation file.
+* This however gives rise to another issue, our block could be rotated to an invalid position outside the game window.
+* Fixing this issue is very straightforward, using the same principle that is used in checking if the block moves outside the game window. If the block rotates to an invalid position outside the game window, simply undo the rotation.
+
 #### 6. Check for Collisions 
 #### 7. Check for Completed Rows 
 #### 8. Game Over 
