@@ -14,6 +14,8 @@ Game::Game()
     
     score = 0;
 
+    LoadHighScore();
+
     InitAudioDevice();
     music = LoadMusicStream("src/Sounds/music.mp3");
     PlayMusicStream(music);
@@ -181,6 +183,8 @@ void Game::LockBlock()
     if (BlockFits() == false)
     {
         gameOver = true;
+        gamesPlayed++;
+        SaveHighScore();
     }
     nextBlock = GetRandomBlock();
 
@@ -238,4 +242,41 @@ void Game::UpdateScore(int linesCleared, int moveDownPoints)
     }
 
     score += moveDownPoints;
+
+    if (score > highScore)
+    {
+        highScore = score;
+    }
+}
+
+void Game::LoadHighScore() 
+{
+    std::ifstream file("data/stats.json");
+    if (file.is_open()) 
+    {
+        json j;
+        file >> j;
+        highScore = j.value("highScore", 0);
+        gamesPlayed = j.value("gamesPlayed", 0);
+        file.close();
+    }
+    else
+    {
+        highScore = 0;
+        gamesPlayed = 0;
+    }
+}
+
+void Game::SaveHighScore() 
+{
+    json j;
+    j["highScore"] = highScore;
+    j["gamesPlayed"] = gamesPlayed;
+
+    std::ofstream file("data/stats.json");
+    if (file.is_open())
+    {
+        file << j.dump(4); // add 4-space indentation
+        file.close();
+    }
 }

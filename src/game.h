@@ -1,7 +1,12 @@
 #pragma once
 
+#include <fstream>
+#include "include/json.hpp"
+
 #include "grid.h"
 #include "blocks.cpp"
+
+using json = nlohmann::json;
 
 class Game
 {
@@ -17,6 +22,8 @@ public:
     bool gameOver;
 
     int score;
+    int highScore;
+    int gamesPlayed;
 
     Music music;
 
@@ -48,4 +55,7 @@ private:
 
     Sound rotateSound;
     Sound clearSound;
+
+    void LoadHighScore();
+    void SaveHighScore();
 };

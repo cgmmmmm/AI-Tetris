@@ -158,4 +158,8 @@ The game will be built step-by-step to ensure full understanding of each system.
 * Additionally, we can use `LoadSound()` and `PlaySound()` to to play the sounds. 
 * Don't forget to unload the sounds and music using a destructor and `CloseAudioDevice()`, `UnloadSound()`, `UnloadMusicStream` to free memory. When you load an audio file, the game allocates system memory to hold that data. If it isn't unloaded, especially when changing game states or closing the game, that memory remains occupied, which can lead to memory leaks and cause the game to slow down or crash over time.
 
-### 13. High Score
+#### 13. High Score & Stats
+* To save the high score, we can store it in a JSON object `stats.json`. We use the single-header nlohmann/json C++ library to handle the parsing and serialization.
+* When the game initializes, a `LoadHighScore()` method opens an input file stream (`std::ifstream`). It reads the `stats.json` file, parses the JSON structure, and extracts `"highScore"` integer into a variable in RAM. If the file doesn't exist (like on the first playthrough), it safely defaults to a score of 0.
+* Writing data to a hard drive during active gameplay is slow and can cause frame drops or stuttering. To optimize performance, we only update the `highScore` variable in RAM while the game is running, continuously comparing it against the player's current score.
+* We only execute a disk write operation when the game actually ends. We create a temporary JSON object, map the `highScore` integer to it, and use an output file stream (`std::ofstream`) to overwrite `stats.json` file,

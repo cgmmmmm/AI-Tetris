@@ -43,7 +43,12 @@ int main()
         char scoreText[10];
         sprintf(scoreText, "%d", game.score);
         // Vector2 MeasureTextEx(Font font, const char *text, float fontSize, float spacing);
-        Vector2 textSize = MeasureTextEx(font, scoreText, 38, 2);
+        Vector2 textSizeScore = MeasureTextEx(font, scoreText, 38, 2);
+
+        // for the highScore value
+        char highScoreText[10];
+        sprintf(highScoreText, "%d", game.highScore);
+        Vector2 textSizeHighScore = MeasureTextEx(font, highScoreText, 38, 2);
 
         // void DrawTextExt(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint);
         DrawTextEx(font, "Next", {370, 15}, 38, 2, WHITE);
@@ -56,8 +61,9 @@ int main()
         // void DrawRectangleRounded(Rectangle rec, float roundness, int segments, Color color);
         DrawRectangleRounded({320, 55, 170, 180}, 0.3, 6, darkGrey);
         DrawRectangleRounded({320, 305, 170, 60}, 0.3, 6, darkGrey);
-        DrawTextEx(font, scoreText, {320 + (170 - textSize.x) / 2 , 315}, 38, 2, WHITE);
+        DrawTextEx(font, scoreText, {320 + (170 - textSizeScore.x) / 2 , 315}, 38, 2, WHITE);
         DrawRectangleRounded({320, 415, 170, 60}, 0.3, 6, darkGrey);
+        DrawTextEx(font, highScoreText, {320 + (170 - textSizeHighScore.x) / 2 , 425}, 38, 2, WHITE);
         
         game.Draw();
 
